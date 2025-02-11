@@ -2,14 +2,6 @@
 //  ContentView.swift
 //  WeatherApp
 //
-//  Created by Dulain Jayasumana on 2025-02-09.
-//
-
-
-//
-//  ContentView.swift
-//  WeatherApp
-//
 //  Created by Dulain Jayasumana on 2025-02-07.
 //
 

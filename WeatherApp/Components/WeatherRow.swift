@@ -5,7 +5,6 @@
 //  Created by Dulain Jayasumana on 2025-02-07.
 //
 
-
 import SwiftUI
 
 struct WeatherRow: View {
@@ -19,14 +18,12 @@ struct WeatherRow: View {
                 .font(.title2)
                 .frame(width: 20, height: 20)
                 .padding()
-                .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.888))
+                .background(Color.gray.opacity(0.3))
                 .cornerRadius(50)
-
             
             VStack(alignment: .leading, spacing: 8) {
                 Text(name)
                     .font(.caption)
-                
                 Text(value)
                     .bold()
                     .font(.title)
@@ -37,6 +34,6 @@ struct WeatherRow: View {
 
 struct WeatherRow_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherRow(logo: "thermometer", name: "Feels like", value: "8°")
+        WeatherRow(logo: "thermometer", name: "Temperature", value: "20°")
     }
 }

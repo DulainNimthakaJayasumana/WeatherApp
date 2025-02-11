@@ -5,16 +5,15 @@
 //  Created by Dulain Jayasumana on 2025-02-07.
 //
 
-
 import SwiftUI
 
 struct WeatherView: View {
-    // Replace YOUR_API_KEY in WeatherManager with your own API key for the app to work
     var weather: ResponseBody
-    
+
     var body: some View {
         ZStack(alignment: .leading) {
             VStack {
+                // Top Section: Location name and current date/time.
                 VStack(alignment: .leading, spacing: 5) {
                     Text(weather.name)
                         .bold()
@@ -27,6 +26,7 @@ struct WeatherView: View {
                 
                 Spacer()
                 
+                // Middle Section: Weather summary.
                 VStack {
                     HStack {
                         VStack(spacing: 20) {
@@ -39,14 +39,14 @@ struct WeatherView: View {
                         
                         Spacer()
                         
-                        Text(weather.main.feelsLike.roundDouble() + "°")
+                        Text("\(weather.main.feelsLike.roundDouble())°")
                             .font(.system(size: 100))
                             .fontWeight(.bold)
                             .padding()
                     }
                     
                     Spacer()
-                        .frame(height:  80)
+                        .frame(height: 80)
                     
                     AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2020/01/24/21/33/city-4791269_960_720.png")) { image in
                         image
@@ -64,6 +64,7 @@ struct WeatherView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             
+            // Bottom Section: Additional details.
             VStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 20) {
@@ -72,13 +73,13 @@ struct WeatherView: View {
                         .padding(.bottom)
                     
                     HStack {
-                        WeatherRow(logo: "thermometer", name: "Min temp", value: (weather.main.tempMin.roundDouble() + ("°")))
+                        WeatherRow(logo: "thermometer", name: "Min temp", value: "\(weather.main.tempMin.roundDouble())°")
                         Spacer()
-                        WeatherRow(logo: "thermometer", name: "Max temp", value: (weather.main.tempMax.roundDouble() + "°"))
+                        WeatherRow(logo: "thermometer", name: "Max temp", value: "\(weather.main.tempMax.roundDouble())°")
                     }
                     
                     HStack {
-                        WeatherRow(logo: "wind", name: "Wind speed", value: (weather.wind.speed.roundDouble() + " m/s"))
+                        WeatherRow(logo: "wind", name: "Wind speed", value: "\(weather.wind.speed.roundDouble()) m/s")
                         Spacer()
                         WeatherRow(logo: "humidity", name: "Humidity", value: "\(weather.main.humidity.roundDouble())%")
                     }
@@ -87,7 +88,7 @@ struct WeatherView: View {
                 .padding()
                 .padding(.bottom, 20)
                 .foregroundColor(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
-                .background(.white)
+                .background(Color.white)
                 .cornerRadius(20, corners: [.topLeft, .topRight])
             }
         }
